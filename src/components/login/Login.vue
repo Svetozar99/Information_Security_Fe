@@ -29,7 +29,7 @@ export default {
     methods: {
         async logIn(){
             await axios
-            .post('/login', this.formData)
+            .post('api/users/login', this.formData)
             .then((response) =>{
                 localStorage.setItem('token', response.data.token)
                 console.log(response.data)
