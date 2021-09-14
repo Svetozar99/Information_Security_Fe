@@ -13,6 +13,9 @@
         <li class="navbar-nav">
             <a href="/register-clinic-center-admin" class="nav-link">Register Clinic Center Admin</a>
         </li>
+        <li class="navbar-nav">
+            <a href="/register-clinic-admin" class="nav-link">Register Clinic Admin</a>
+        </li>
       </ul>
     </div>
   </div>

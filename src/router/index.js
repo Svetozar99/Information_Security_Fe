@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory} from 'vue-router'
 import Login from '../components/login/Login.vue'
 import ClinicCenterAdmin from '../components/register/ClinicCenterAdmin.vue'
+import ClinicAdmin from '../components/register/ClinicAdmin.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes: [
@@ -13,6 +14,11 @@ const router = new createRouter({
             name: 'ClninicCenterAdmin',
             path: '/register-clinic-center-admin',
             component: ClinicCenterAdmin
+        },
+        {
+            name: 'ClninicAdmin',
+            path: '/register-clinic-admin',
+            component: ClinicAdmin
         },
     ],
 })

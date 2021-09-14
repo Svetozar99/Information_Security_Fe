@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="addUser">
+    <form @submit.prevent="addClinicAdmin">
         <div style="width: 50%; background:white; padding: 5%; border-radius:2%;">
             <div class="mb-3">
                 <label class="form-label" for="pass">Password:</label>
@@ -25,60 +25,62 @@
                 <label class="form-label" for="email">Email:</label>
                 <input class="form-control" type="email" id="email" v-model="formData.email" />
             </div>
-            <select>
-                <option v-for="clinic in clinics" v-bind:key="clinic.id">
+            <div class="mb-3">
+                <label class="form-label" for="identifier">Identifier:</label>
+                <input class="form-control" type="text" id="identifier" v-model="formData.identifier" />
+            </div>
+            <label for="">Clinic:</label>
+            <select class="form-control" v-model="formData.idClinic">
+                <option v-for="clinic in clinics" :value="clinic.id" :key="clinic.id">
                     {{ clinic.name }}
                 </option>
             </select>
-            <div class="mb-3">
-                <label class="form-label" for="identifier">identifier:</label>
-                <input class="form-control" type="text" id="identifier" v-model="formData.identifier" />
-            </div>
             <button class="btn btn-primary">Register</button>
         </div>
     </form>
 </template>
 
 <script>
-    import axios from '../axiosConfig'
-    export default {
-        name: 'CenterAdmin',
-        // created(){
-        //     let token = localStorage.getItem('token');
-        //     axios.defaults.headers['Authorization'] = `${token}`
-        // },
-        data() {
-            return {
-                formData :{
-                    pass: '',
-                    address: '',
-                    phone: '',
-                    firstname: '',
-                    lastname: '',
-                    email: '',
-                    idClinic:'',
-                    identifier: ''
-                },
-                errorMsg: '',
-                jwt: localStorage.getItem('token'),
-                clinics: []
-            }
-        },
-        methods: {
-            addUser(){
-                axios
-                .post('api/users/register-clinic-center-admin', this.formData)
-                .then(response => {
-                    console.log(response)
-                    alert('Succesfully registred')
-                    this.$router.push({ path: '/login' })
-                })
-                .catch(error => {
-                    console.log(error)
-                    this.errorMsg = 'Error retrivign data'
-                })
+
+import axios from '../../axiosConfig'
+export default {
+    name:'ClinicAdmin',
+    created(){
+        let token = localStorage.getItem('token');
+        axios.defaults.headers['Authorization'] = `${token}`
+        this.getClinics()
+    },
+    data(){
+        return{
+            formData:{
+                pass: '',
+                address: '',
+                phone: '',
+                firstname: '',
+                lastname: '',
+                email: '',
+                idClinic:0,
+                identifier: ''
             },
-            getClinics() {
+            errorMsg: '',
+            clinics:[]
+        }
+    },
+    methods:{
+        addClinicAdmin(){
+            axios
+            .post('api/users/register-clinic-admin', this.formData)
+            .then((response) =>{
+                console.log(response)
+                alert('Successfuly registred clinic admin!')
+                this.$router.push({ path: '/login' })
+            })
+            .catch((error) => {
+                console.log(error)
+                this.errorMsg = 'Error retriving data!'
+            })
+        },
+        getClinics() {
                 axios
                 .get('api/clinics/all')
                 .then((response) => {
@@ -90,8 +92,8 @@
                     this.errorMsg = 'Error retriving data'
                 })
             },
-        }
     }
+}
 </script>
 
 <style scoped>
