@@ -31,7 +31,7 @@ export default {
             await axios
             .post('api/users/login', this.formData)
             .then((response) =>{
-                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('token', response.data.accessToken)
                 console.log(response.data)
                 this.$router.push({ path: '/' })
             })

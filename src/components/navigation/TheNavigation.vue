@@ -10,7 +10,9 @@
         <li class="navbar-nav">
             <a href="/login" class="nav-link">Log In</a>
         </li>
-        
+        <li class="navbar-nav">
+            <a href="/register-clinic-center-admin" class="nav-link">Register Clinic Center Admin</a>
+        </li>
       </ul>
     </div>
   </div>
