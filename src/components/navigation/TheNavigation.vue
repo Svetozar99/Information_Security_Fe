@@ -19,6 +19,12 @@
         <li id="a" class="navbar-nav">
             <a href="/register-doctor" class="nav-link">Register Doctor</a>
         </li>
+        <li id="a" class="navbar-nav">
+            <a href="/register-nurse" class="nav-link">Register Nurse</a>
+        </li>
+        <li id="a" class="navbar-nav">
+            <a href="/register-patient" class="nav-link">Register Patient</a>
+        </li>
       </ul>
     </div>
   </div>
