@@ -7,14 +7,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="navbar-nav">
+        <li id="a" class="navbar-nav">
             <a href="/login" class="nav-link">Log In</a>
         </li>
-        <li class="navbar-nav">
+        <li id="a" class="navbar-nav">
             <a href="/register-clinic-center-admin" class="nav-link">Register Clinic Center Admin</a>
         </li>
-        <li class="navbar-nav">
+        <li id="a" class="navbar-nav">
             <a href="/register-clinic-admin" class="nav-link">Register Clinic Admin</a>
+        </li>
+        <li id="a" class="navbar-nav">
+            <a href="/register-doctor" class="nav-link">Register Doctor</a>
         </li>
       </ul>
     </div>
@@ -23,8 +26,14 @@
 </template>
 
 <script>
-
 export default {
   name:'TheNavigation',
 }
 </script>
+
+<style scoped>
+  #a{
+    margin: 3px;
+    background-color: #b6becc;
+  }
+</style>
