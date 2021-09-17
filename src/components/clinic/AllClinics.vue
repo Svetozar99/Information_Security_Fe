@@ -1,11 +1,12 @@
 <template>
     <div>
-        <h1>OVO SU SVE KLINICE U SISTEMU</h1>
+        <h1>OVO SU SVE KLINIKE U SISTEMU</h1>
         <h3 v-if="errorMsg">{{errorMsg}}</h3>
             <div style="background:red; margin:2% 0 2% 0; padding: 2% width:33% display:grid" v-for="c in clinics" :key="c.id">
             <div>
-                <h5>{{c.address}} {{c.name}}</h5>
-                <h5>{{c.description}}</h5>
+                <h3>NAME: {{c.name}}</h3>
+                <h5>ADDRESS: {{c.address}} </h5>
+                <h5>DESCRIPTION: {{c.description}}</h5>
             </div>
         </div>
     </div>
