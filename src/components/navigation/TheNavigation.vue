@@ -25,6 +25,12 @@
         <li id="a" class="navbar-nav">
             <a href="/register-patient" class="nav-link">Register Patient</a>
         </li>
+        <li id="a" class="navbar-nav">
+            <a href="/logout" class="nav-link">Log out</a>
+        </li>
+        <li id="a" class="navbar-nav">
+            <a href="/all-clinics" class="nav-link">All clinics</a>
+        </li>
       </ul>
     </div>
   </div>

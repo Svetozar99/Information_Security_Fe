@@ -47,10 +47,7 @@
     export default {
         name:'Doctor',
         created(){
-            let token = localStorage.getItem('token');
-            console.log(token + ' accessYoken')
-            axios.defaults.headers['Authorization'] = `${token}`
-            this.getClinics();
+            this.getAllClinics();
         },
         data() {
             return {
@@ -84,12 +81,12 @@
                     this.errorMsg = 'Error retrivign data'
                 })
             },
-            getClinics() {
+            getAllClinics(){
                 axios
                 .get('api/clinics/all')
                 .then((response) => {
-                    console.log(response.data + 'sve klinike')
                     this.clinics = response.data
+                    console.log(this.clinics + ' contacts')
                 })
                 .catch((error) => {
                     console.log(error)

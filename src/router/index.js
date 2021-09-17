@@ -5,6 +5,8 @@ import ClinicAdmin from '../components/register/ClinicAdmin.vue'
 import Doctor from '../components/register/Doctor.vue'
 import Nurse from '../components/register/Nurse.vue'
 import Patient from '../components/register/Patient.vue'
+import Logout from '../components/login/Logout.vue'
+import AllClinics from '../components/clinic/AllClinics.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes: [
@@ -37,6 +39,16 @@ const router = new createRouter({
             name: 'Patient',
             path: '/register-patient',
             component: Patient
+        },
+        {
+            name: 'Logout',
+            path: '/logout',
+            component: Logout
+        },
+        {
+            name: 'AllClinics',
+            path: '/all-clinics',
+            component: AllClinics
         },
     ],
 })

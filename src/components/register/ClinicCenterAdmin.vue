@@ -46,10 +46,7 @@
     export default {
         name: 'ClinicCenterAdmin',
         created(){
-            let token = localStorage.getItem('token');
-            console.log(token + ' accessYoken')
-            axios.defaults.headers['Authorization'] = `${token}`
-            this.getClinics();
+            this.getAllClinics();
         },
         data() {
             return {
@@ -83,18 +80,18 @@
                     this.errorMsg = 'Error retrivign data'
                 })
             },
-            getClinics() {
-                axios
-                .get('api/clinics/all')
-                .then((response) => {
-                    console.log(response.data + 'sve klinike')
-                    this.clinics = response.data
-                })
-                .catch((error) => {
-                    console.log(error)
-                    this.errorMsg = 'Error retriving data'
-                })
-            },
+            getAllClinics(){
+            axios
+            .get('api/clinics/all')
+            .then((response) => {
+                this.clinics = response.data
+                console.log(this.clinics + ' contacts')
+            })
+            .catch((error) => {
+                console.log(error)
+                this.errorMsg = 'Error retriving data'
+            })
+        },
             changeClinic(event){
                 this.idClinic = event.target.value
                 this.selectedCLi = event.target.options[event.target.options.selectedIndex].text
