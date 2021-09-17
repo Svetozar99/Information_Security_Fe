@@ -7,28 +7,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li id="a" class="navbar-nav">
+        <li v-if="!tokenn" id="a" class="navbar-nav">
             <a href="/login" class="nav-link">Log In</a>
         </li>
-        <li id="a" class="navbar-nav">
-            <a href="/register-clinic-center-admin" class="nav-link">Register Clinic Center Admin</a>
-        </li>
-        <li id="a" class="navbar-nav">
-            <a href="/register-clinic-admin" class="nav-link">Register Clinic Admin</a>
-        </li>
-        <li id="a" class="navbar-nav">
-            <a href="/register-doctor" class="nav-link">Register Doctor</a>
-        </li>
-        <li id="a" class="navbar-nav">
-            <a href="/register-nurse" class="nav-link">Register Nurse</a>
-        </li>
-        <li id="a" class="navbar-nav">
-            <a href="/register-patient" class="nav-link">Register Patient</a>
-        </li>
-        <li id="a" class="navbar-nav">
+        <!-- <label v-if="!tokenn" for="">Register:</label> -->
+        <select v-if="!tokenn" id="userapi" class="navbar-nav">
+          <option value="/register-clinic-center-admin">Register Clinic Center Admin</option>
+          <option value="/register-clinic-admin">Register Clinic Admin</option>
+          <option value="/register-doctor">Register Doctor</option>
+          <option value="/register-nurse">Register Nurse</option>
+          <option value="/register-patient">Register Patient</option>
+        </select>
+        <button v-if="!tokenn" @click="fin()">Register</button>
+        
+        <li v-if="tokenn" id="a" class="navbar-nav">
             <a href="/logout" class="nav-link">Log out</a>
         </li>
-        <li id="a" class="navbar-nav">
+        <li v-if="tokenn" id="a" class="navbar-nav">
             <a href="/all-clinics" class="nav-link">All clinics</a>
         </li>
       </ul>
@@ -40,6 +35,21 @@
 <script>
 export default {
   name:'TheNavigation',
+  data(){
+    return {
+      id:'',
+      putanja:'',
+      tokenn: localStorage.getItem('token'),
+    }
+  },
+  methods:{
+    fin(){
+      var select = document.getElementById('userapi');
+      var value = select.options[select.selectedIndex].value;
+      console.log(value );
+      this.$router.push({ path: value })
+    }
+  }
 }
 </script>
 

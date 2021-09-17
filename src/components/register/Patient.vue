@@ -47,9 +47,6 @@
     export default {
         name:'Patient',
         created(){
-            let token = localStorage.getItem('token');
-            console.log(token + ' accessYoken')
-            axios.defaults.headers['Authorization'] = `${token}`
             this.getAllClinics();
         },
         data() {

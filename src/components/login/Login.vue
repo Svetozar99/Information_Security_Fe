@@ -33,7 +33,7 @@ export default {
             .then((response) =>{
                 localStorage.setItem('token', response.data.accessToken)
                 console.log(response.data)
-                this.$router.push({ path: '/' })
+                this.$router.push({ path: '/all-clinics' })
             })
             .catch((error) => {
                 console.log(error)

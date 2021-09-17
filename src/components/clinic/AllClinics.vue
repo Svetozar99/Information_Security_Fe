@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>OVO SU SVE KLINICE U SISTEMU</h1>
         <h3 v-if="errorMsg">{{errorMsg}}</h3>
             <div style="background:red; margin:2% 0 2% 0; padding: 2% width:33% display:grid" v-for="c in clinics" :key="c.id">
             <div>
@@ -32,7 +33,7 @@ export default {
             .get('api/clinics/all')
             .then((response) => {
                 this.clinics = response.data
-                console.log(this.clinics + ' contacts')
+                console.log(this.clinics + ' all clinics')
             })
             .catch((error) => {
                 console.log(error)
