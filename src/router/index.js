@@ -53,4 +53,22 @@ const router = new createRouter({
     ],
 })
 
+router.beforeEach((to,from, next) => {
+    const token = localStorage.getItem('token')
+
+    if ((to.name === 'Patient' && !token) 
+        || (to.name === 'Nurse' && !token) 
+        || (to.name === 'Doctor' && !token) 
+        || (to.name === 'ClinicAdmin' && !token)
+        || (to.name === 'ClinicCenterAdmin' && !token)) next();
+    else if(to.name !== 'Login' && !token) next({ name: 'Login'});
+    else if((to.name === 'Login'   
+        || to.name === 'Patient' 
+        || to.name === 'Nurse' 
+        || to.name === 'ClinicAdmin'
+        || to.name === 'Doctor' 
+        || to.name === 'ClinicCenterAdmin') && token) next ({name: 'AllClinics'})
+    else next();
+})
+
 export default router;
