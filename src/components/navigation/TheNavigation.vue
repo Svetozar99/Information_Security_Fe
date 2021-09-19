@@ -26,6 +26,9 @@
         <li v-if="tokenn" id="a" class="navbar-nav">
             <a href="/all-clinics" class="nav-link">All clinics</a>
         </li>
+        <li v-if="patient != '' && tokenn" id="a" class="navbar-nav">
+            <a href="/my-medicial-record" class="nav-link">My medicial record</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -35,11 +38,20 @@
 <script>
 export default {
   name:'TheNavigation',
+  created(){
+    if(this.tokenn)
+      this.whichRole()
+  },
   data(){
     return {
       id:'',
       putanja:'',
       tokenn: localStorage.getItem('token'),
+      patient:'',
+      doctor:'',
+      nurse:'',
+      clinicAdmin:'',
+      clinicCenterAdmin:''
     }
   },
   methods:{
@@ -48,6 +60,31 @@ export default {
       var value = select.options[select.selectedIndex].value;
       console.log(value );
       this.$router.push({ path: value })
+    },
+    whichRole(){
+      let jwtData = this.tokenn.split('.')[1]
+      let decodedJwtJsonData = window.atob(jwtData)
+      let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+      let role = decodedJwtData.role
+
+      if(role == 'PATIENT')
+        this.patient = role
+      else if(role == 'DOCTOR')
+        this.doctor = role
+      else if(role == 'NURSE')
+        this.nurse = role
+      else if(role == 'CLINIC_ADMIN')
+        this.clinicAdmin = role
+      else if(role == 'CLINIC_CENTER_ADMIN')
+        this.clinicCenterAdmin = role
+
+      console.log('jwtData: ' + jwtData)
+      console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
+      console.log('decodedJwtData: ' + JSON.stringify(decodedJwtData))
+      console.log('Is admin: ' + role)
+
+      console.log(this.tokenn + ' tokenn')
     }
   }
 }
