@@ -69,7 +69,8 @@ router.beforeEach((to,from, next) => {
         || (to.name === 'ClinicAdmin' && !token)
         || (to.name === 'ClinicCenterAdmin' && !token)) next();
     else if(to.name !== 'Login' && !token) next({ name: 'Login'});
-    else if((to.name === 'Login'
+
+    else if((to.name === 'Login'   
         || to.name === 'Patient' 
         || to.name === 'Nurse' 
         || to.name === 'ClinicAdmin'
