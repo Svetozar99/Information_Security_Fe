@@ -8,6 +8,7 @@ import Patient from '../components/register/Patient.vue'
 import Logout from '../components/login/Logout.vue'
 import AllClinics from '../components/clinic/AllClinics.vue'
 import MyMedicialRecord from '../components/medicalRecord/MyMedicialRecord.vue'
+import AddMedicialRecord from '../components/medicalRecord/AddMedicialRecord.vue'
 const router = new createRouter({
     history: createWebHistory(),
     routes: [
@@ -55,6 +56,11 @@ const router = new createRouter({
             name: 'MyMedicialRecord',
             path: '/my-medicial-record',
             component: MyMedicialRecord
+        },
+        {
+            name: 'AddMedicialRecord',
+            path: '/add-medicial-record',
+            component: AddMedicialRecord
         },
     ],
 })

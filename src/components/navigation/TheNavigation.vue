@@ -29,6 +29,9 @@
         <li v-if="patient != '' && tokenn" id="a" class="navbar-nav">
             <a href="/my-medicial-record" class="nav-link">My medicial record</a>
         </li>
+        <li v-if="(doctor != '' || nurse != '') && tokenn" id="a" class="navbar-nav">
+            <a href="/add-medicial-record" class="nav-link">Add medicial record</a>
+        </li>
       </ul>
     </div>
   </div>
