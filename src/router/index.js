@@ -10,6 +10,7 @@ import AllClinics from '../components/clinic/AllClinics.vue'
 import MyMedicialRecord from '../components/medicalRecord/MyMedicialRecord.vue'
 import AddMedicialRecord from '../components/medicalRecord/AddMedicialRecord.vue'
 import AddClinic from '../components/clinic/AddClinic.vue'
+
 const router = new createRouter({
     history: createWebHistory(),
     routes: [

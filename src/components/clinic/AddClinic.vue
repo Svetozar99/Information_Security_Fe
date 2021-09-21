@@ -48,9 +48,10 @@ export default {
             .post('/api/clinics/saveClinic', this.formData)
             .then(response => {
                 alert("doslo do post");
+                response.errorMsg('doslo je do greske');
             })
             .catch(error => {
-                console.log("greska"); 
+                console.log(error);
                 this.errorMsg = "Greska kod dodavanja klinike"
             })
         }
