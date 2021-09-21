@@ -32,6 +32,9 @@
         <li v-if="(doctor != '' || nurse != '') && tokenn" id="a" class="navbar-nav">
             <a href="/add-medicial-record" class="nav-link">Add medicial record</a>
         </li>
+        <li v-if="clinicCenterAdmin != '' && tokenn" id="a" class="navbar-nav">
+            <a href="/add-clinic" class="nav-link">Add clinic </a>
+        </li>
       </ul>
     </div>
   </div>
