@@ -10,6 +10,7 @@ import AllClinics from '../components/clinic/AllClinics.vue'
 import MyMedicialRecord from '../components/medicalRecord/MyMedicialRecord.vue'
 import AddMedicialRecord from '../components/medicalRecord/AddMedicialRecord.vue'
 import AddClinic from '../components/clinic/AddClinic.vue'
+import UpdateUser from '../components/user/UpdateUser.vue'
 
 const router = new createRouter({
     history: createWebHistory(),
@@ -68,6 +69,11 @@ const router = new createRouter({
             name: 'AddClinic',
             path: '/add-clinic',
             component: AddClinic
+        },
+        {
+            name: 'UpdateUser',
+            path: '/update-user',
+            component: UpdateUser
         }
     ],
 })
