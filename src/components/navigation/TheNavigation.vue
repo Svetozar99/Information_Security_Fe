@@ -35,7 +35,7 @@
         <li v-if="clinicCenterAdmin != '' && tokenn" id="a" class="navbar-nav">
             <a href="/add-clinic" class="nav-link">Add clinic </a>
         </li>
-         <li v-if="patient != '' && tokenn" id="a" class="navbar-nav">
+         <li v-if="tokenn" id="a" class="navbar-nav">
             <a href="/update-user" class="nav-link">My profile </a>
         </li>
       </ul>

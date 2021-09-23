@@ -1,6 +1,10 @@
 <template>
     <div>
         <h1>OVO SU SVE KLINIKE U SISTEMU</h1>
+        <form class="d-flex">
+            <input @keyup="searchClinics()" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" v-model="search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         <h3 v-if="errorMsg">{{errorMsg}}</h3>
             <div style="background:red; margin:2% 0 2% 0; padding: 2% width:33% display:grid" v-for="c in clinics" :key="c.id">
             <div>
@@ -25,7 +29,8 @@ export default {
     data(){
         return {
             clinics: [],
-            errorMsg: ''
+            errorMsg: '',
+            search:''
         }
     },
     methods:{
@@ -39,6 +44,18 @@ export default {
             .catch((error) => {
                 console.log(error)
                 this.errorMsg = 'Error retriving data'
+            })
+        },
+        searchClinics(){
+            axios
+            .get('api/clinics/filter/' + this.search)
+            .then((response) => {
+                this.clinics = response.data
+                console.log(this.clinics + ' all clinics')
+            })
+            .catch((error) => {
+                console.log(error)
+                // this.errorMsg = 'Error retriving data'
             })
         }
     }
