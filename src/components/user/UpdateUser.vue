@@ -30,7 +30,8 @@
                <input disabled="disabled" class="form-control" type="text" id="identifier" v-model="myProfile.identifier" />
             </div>
             <label for="">Clinic:</label>
-            <select class="form-control" @change="changeClinic($event)" v-model="myProfile.idClinic">
+            <select class="form-control" @change="changeClinic($event)" v-model="myProfile.clinicDto.id">
+                
                 <option v-for="clinic in clinics" :value="clinic.id" :key="clinic.id">
                     {{ clinic.name }}
                 </option>
@@ -68,7 +69,7 @@ export default {
             then((response) => {
                 this.myProfile = response.data
                 console.log(this.myProfile + 'moj profil');
-                console.log(JSON.stringify(this.myProfile[0].id))
+                console.log(JSON.stringify(this.myProfile.clinicDto) + ' moj profil stringify')
             })
             .catch((error) => {
                 console.log(error)
